@@ -19,7 +19,9 @@ interface JobCardProps {
 
 export function JobCard({ job }: JobCardProps) {
   const datePosted = timeAgo(job.updatedAt);
-  const salaryRange = `${job.minSalary}-${job.maxSalary}LPA`;
+  const salaryRange = `${(job.minSalary / 100000).toFixed(0)}-${(
+    job.maxSalary / 100000
+  ).toFixed(0)} LPA`;
 
   return (
     <Card

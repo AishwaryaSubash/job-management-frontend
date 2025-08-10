@@ -152,10 +152,20 @@ export default function JobsFilterBar() {
           </Group>
           <RangeSlider
             value={salary}
-            onChange={(v) => setSalary(v)}
-            onChangeEnd={(v) =>
-              setQuery({ ...query, salaryMin: v[0] * 12, salaryMax: v[1] * 12 })
-            }
+            onChange={(v) => {
+              if (v[1] >= v[0]) {
+                setSalary(v);
+              }
+            }}
+            onChangeEnd={(v) => {
+              if (v[1] >= v[0]) {
+                setQuery({
+                  ...query,
+                  salaryMin: v[0] * 12,
+                  salaryMax: v[1] * 12,
+                });
+              }
+            }}
             min={40000}
             max={200000}
             step={1000}
