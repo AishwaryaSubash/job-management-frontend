@@ -1,3 +1,5 @@
+"use client";
+
 import { Button, Container, Group, Text, Title } from "@mantine/core";
 import { useRouter } from "next/navigation";
 
@@ -5,7 +7,7 @@ export default function NotFound() {
   const router = useRouter();
   return (
     <Container className="flex flex-col items-center justify-center py-20">
-      <div className="text-center font-medium text-[38px] leading-none mb-12 text-gray-300 sm:text-[32px]">
+      <div className="flex flex-col items-center justify-center text-center font-medium text-[38px] leading-none mb-12 text-gray-300 sm:text-[32px]">
         404
       </div>
 
