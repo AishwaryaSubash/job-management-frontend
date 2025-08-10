@@ -45,7 +45,8 @@ export async function POST(req: Request) {
       requirements: "1-3 Exp",
       responsibilities: "responsibilities",
     };
-
+    body.maxSalary = Number(body.maxSalary);
+    body.minSalary = Number(body.minSalary);
     const upstream = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/jobs`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
