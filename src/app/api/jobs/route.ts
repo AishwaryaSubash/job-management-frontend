@@ -16,8 +16,7 @@ export async function GET(req: Request) {
       if (v) params.set(k, v);
     });
     const upstream = await fetch(
-      `${process.env.BACKEND_URL}/jobs${
-        params.toString() ? `?${params.toString()}` : ""
+      `${process.env.BACKEND_URL}/jobs${params.toString() ? `?${params.toString()}` : ""
       }`,
       {
         cache: "no-store",
@@ -25,12 +24,16 @@ export async function GET(req: Request) {
     );
     const data = await upstream.json();
     return NextResponse.json(data, { status: upstream.status });
-  } catch (e: any) {
+  } catch (e: unknown) {
     return NextResponse.json(
-      { error: "Upstream error", message: e?.message ?? "" },
+      {
+        error: "Upstream error",
+        message: e instanceof Error ? e.message : String(e ?? "")
+      },
       { status: 500 }
     );
   }
+
 }
 
 export async function POST(req: Request) {
@@ -52,10 +55,15 @@ export async function POST(req: Request) {
     const data = await upstream.json();
 
     return NextResponse.json(data, { status: upstream.status });
-  } catch (e: any) {
+  } catch (e: unknown) {
+    let message = "Unknown error";
+    if (e instanceof Error) {
+      message = e.message;
+    }
     return NextResponse.json(
-      { error: "Upstream error", message: e?.message ?? "" },
+      { error: "Upstream error", message },
       { status: 500 }
     );
   }
+
 }
