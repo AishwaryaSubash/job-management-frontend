@@ -172,7 +172,7 @@ export default function JobForm({ onSuccess }: Props) {
                 render={({ field }) => (
                   <TextInput
                     placeholder="₹ 0"
-                    value={formatIndianNumberDigits(field.value)}
+                    value={formatIndianNumberDigits(field.value.toString())}
                     onChange={(e) =>
                       field.onChange(stripNonDigits(e.currentTarget.value))
                     }
@@ -187,7 +187,7 @@ export default function JobForm({ onSuccess }: Props) {
                 render={({ field }) => (
                   <TextInput
                     placeholder="₹ 12,00,000"
-                    value={formatIndianNumberDigits(field.value)}
+                    value={formatIndianNumberDigits(field.value.toString())}
                     onChange={(e) =>
                       field.onChange(stripNonDigits(e.currentTarget.value))
                     }
