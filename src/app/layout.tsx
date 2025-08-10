@@ -9,6 +9,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <title>Job Management Portal</title>
         <link
           rel="icon"
           type="image/svg+xml"
