@@ -49,7 +49,6 @@ export default function JobsFilterBar() {
   ]);
   const [searchLoading, setSearchLoading] = useState(false);
 
-  // Sync local state with query changes
   useEffect(() => {
     setSearch(query.search ?? "");
     setLocation(query.location ?? "");
@@ -60,7 +59,6 @@ export default function JobsFilterBar() {
     ]);
   }, [query]);
 
-  // Hide loader once search query updates
   useEffect(() => {
     setSearchLoading(false);
   }, [query.search]);

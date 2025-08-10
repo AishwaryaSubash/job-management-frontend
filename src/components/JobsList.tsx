@@ -30,7 +30,6 @@ export default function JobsList({
     return params.toString();
   }, [sp]);
 
-  // Capture the initial query string (from first render) to prevent duplicate fetch
   useEffect(() => {
     if (initialQSRef.current === null) {
       initialQSRef.current = queryString;
@@ -38,13 +37,11 @@ export default function JobsList({
   }, [queryString]);
 
   useEffect(() => {
-    // Do not re-fetch if the current query matches the initial SSR query
     if (initialQSRef.current === queryString) return;
-
     const controller = new AbortController();
     setLoading(true);
+    
     const url = `/api/jobs${queryString ? `?${queryString}` : ""}`;
-
     fetch(url, { cache: "no-store", signal: controller.signal })
       .then((r) => r.json())
       .then((data: JobInterface[]) => {
@@ -52,7 +49,6 @@ export default function JobsList({
       })
       .catch((e) => {
         if (e?.name !== "AbortError") {
-          // Optional: surface error state/toast here
         }
       })
       .finally(() => {

@@ -1,4 +1,3 @@
-// hooks/useJobs.ts
 import { useEffect, useState } from "react";
 import type { JobsQuery } from "../types";
 import { JobInterface } from "@/lib/types";
