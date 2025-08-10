@@ -220,11 +220,14 @@ export default function JobForm({ onSuccess }: Props) {
       </Grid>
       <Group justify="space-between" mt="xl">
         <Button
+          radius="md"
           type="button"
           onClick={() => reset()}
           disabled={formState.isSubmitting}
-          className="px-4 py-2 border rounded-md disabled:opacity-60"
+          className="px-4 py-2 border disabled:opacity-60"
           rightSection={<IconArrowDown size={14} />}
+          c="black"
+          style={{ border: "1px solid #000", backgroundColor: "#fff" }}
         >
           Save Draft
         </Button>
