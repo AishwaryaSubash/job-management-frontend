@@ -19,6 +19,7 @@ interface JobCardProps {
 
 export function JobCard({ job }: JobCardProps) {
   const datePosted = timeAgo(job.updatedAt);
+  const salaryRange = `${job.minSalary}-${job.maxSalary}LPA`;
 
   return (
     <Card
@@ -78,7 +79,7 @@ export function JobCard({ job }: JobCardProps) {
           </Group>
           <Group gap={6} wrap="nowrap">
             <IconStack2 size={16} />
-            <Text>{job.salaryRange}</Text>
+            <Text>{salaryRange}</Text>
           </Group>
         </Group>
 

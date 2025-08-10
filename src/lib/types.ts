@@ -7,16 +7,17 @@ export interface CompanyInterface {
 }
 
 export interface JobInterface {
-  id: string;                
+  id: string;
   title: string;
   location: string;
   type: JobType;
-  salaryRange: string;
+  minSalary: number;
+  maxSalary: number;
   description: string;
   requirements: string;
   responsibilities: string;
-  deadline: string;          
-  companyId: string;    
-  updatedAt: string;     
+  deadline: string;
+  companyId: string;
+  updatedAt: string;
   company: CompanyInterface;
 }

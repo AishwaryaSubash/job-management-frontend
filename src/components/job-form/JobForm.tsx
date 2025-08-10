@@ -44,7 +44,7 @@ export default function JobForm({ onSuccess }: Props) {
       return;
     }
     if (!data.applicationDeadline) {
-      setError("applicationDeadline" as any, {
+      setError("applicationDeadline", {
         type: "required",
         message: "Please pick a deadline",
       });
@@ -54,19 +54,25 @@ export default function JobForm({ onSuccess }: Props) {
     const deadlineISO = (() => {
       const v = data.applicationDeadline as unknown;
       if (!v) return null;
-      const d = v instanceof Date ? v : new Date(v as any);
+      let d: Date;
+      if (v instanceof Date) {
+        d = v;
+      } else if (typeof v === "string" || typeof v === "number") {
+        d = new Date(v);
+      } else {
+        return null; 
+      }
       return Number.isFinite(d.getTime()) ? d.toISOString() : null;
     })();
+    
 
     const payload = {
       title: data.jobTitle,
       companyName: data.companyName,
       location: data.location,
       type: data.jobType,
-      salaryRange:
-        data.salaryMin && data.salaryMax
-          ? `${data.salaryMin}-${data.salaryMax}`
-          : "",
+      minSalary: data.salaryMin,
+      maxSalary: data.salaryMax,
       description: data.description,
       deadline: deadlineISO,
     };
@@ -96,12 +102,20 @@ export default function JobForm({ onSuccess }: Props) {
       });
       reset();
       onSuccess?.();
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const message =
+        err instanceof Error
+          ? err.message
+          : typeof err === "string"
+          ? err
+          : "Unknown error";
+    
       notifications.show({
         color: "red",
         title: "Failed to create job",
-        message: err?.message ?? "Unknown error",
+        message,
       });
+    
       console.error(err);
     }
   };
