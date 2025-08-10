@@ -45,7 +45,7 @@ export function JobCard({ job }: JobCardProps) {
               alt={job.company.name}
               radius="md"
               fit="contain"
-              className="h-12 w-12"
+              className="h-10 w-10"
             />
           </Box>
           <Badge
@@ -75,7 +75,7 @@ export function JobCard({ job }: JobCardProps) {
           </Group>
           <Group gap={6} wrap="nowrap">
             <IconBuilding size={16} />
-            <Text>Onsite</Text>
+            <Text>{job.location}</Text>
           </Group>
           <Group gap={6} wrap="nowrap">
             <IconStack2 size={16} />

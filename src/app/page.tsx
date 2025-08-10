@@ -31,7 +31,7 @@ export default async function Home({
   return (
     <div>
       <AppHeader />
-      <div className="px-6">
+      <div>
         <JobsFilterBar />
       </div>
       <JobsList initialJobs={initialJobs} />

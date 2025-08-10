@@ -1,7 +1,7 @@
 "use client";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useMemo } from "react";
-import type { JobsQuery } from "./types";
+import type { JobsQuery } from "../types";
 
 export function useJobsQuery(): [JobsQuery, (q: JobsQuery) => void] {
   const router = useRouter();
@@ -29,9 +29,8 @@ export function useJobsQuery(): [JobsQuery, (q: JobsQuery) => void] {
       params.set("salaryMin", String(q.salaryMin));
     if (typeof q.salaryMax === "number")
       params.set("salaryMax", String(q.salaryMax));
-    const url = `${pathname}${
-      params.toString() ? `?${params.toString()}` : ""
-    }`;
+    const url = `${pathname}${params.toString() ? `?${params.toString()}` : ""
+      }`;
     router.replace(url);
   };
 

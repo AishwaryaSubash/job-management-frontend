@@ -218,7 +218,6 @@ export default function JobForm({ onSuccess }: Props) {
           />
         </Grid.Col>
       </Grid>
-
       <Group justify="space-between" mt="xl">
         <Button
           type="button"
