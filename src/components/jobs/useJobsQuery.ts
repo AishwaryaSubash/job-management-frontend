@@ -32,7 +32,7 @@ export function useJobsQuery(): [JobsQuery, (q: JobsQuery) => void] {
     const url = `${pathname}${
       params.toString() ? `?${params.toString()}` : ""
     }`;
-    router.replace(url as any);
+    router.replace(url);
   };
 
   return [current, set];

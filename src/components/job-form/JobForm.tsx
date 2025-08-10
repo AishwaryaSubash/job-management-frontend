@@ -14,6 +14,7 @@ import { DateMenu } from "./fields/DateMenu";
 import { SelectMenu } from "./fields/SelectMenu";
 import { JOB_TYPE_OPTIONS, JobFormValues } from "./types";
 import { formatIndianNumberDigits, stripNonDigits } from "@/lib/currency";
+import { IconArrowDown } from "@tabler/icons-react";
 
 interface Props {
   onSuccess?: () => void;
@@ -60,11 +61,10 @@ export default function JobForm({ onSuccess }: Props) {
       } else if (typeof v === "string" || typeof v === "number") {
         d = new Date(v);
       } else {
-        return null; 
+        return null;
       }
       return Number.isFinite(d.getTime()) ? d.toISOString() : null;
     })();
-    
 
     const payload = {
       title: data.jobTitle,
@@ -109,13 +109,13 @@ export default function JobForm({ onSuccess }: Props) {
           : typeof err === "string"
           ? err
           : "Unknown error";
-    
+
       notifications.show({
         color: "red",
         title: "Failed to create job",
         message,
       });
-    
+
       console.error(err);
     }
   };
@@ -220,20 +220,22 @@ export default function JobForm({ onSuccess }: Props) {
       </Grid>
 
       <Group justify="space-between" mt="xl">
-        <button
+        <Button
           type="button"
           onClick={() => reset()}
           disabled={formState.isSubmitting}
           className="px-4 py-2 border rounded-md disabled:opacity-60"
+          rightSection={<IconArrowDown size={14} />}
         >
-          Save Draft ▾
-        </button>
+          Save Draft
+        </Button>
         <Button
           type="submit"
           loading={formState.isSubmitting}
           disabled={!formState.isValid}
           radius="md"
           style={{ backgroundColor: "#00aaff" }}
+          c="white"
         >
           Publish »
         </Button>

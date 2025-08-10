@@ -1,6 +1,7 @@
 "use client";
 import { DatePickerInput } from "@mantine/dates";
 import { Control, Controller, FieldValues, Path } from "react-hook-form";
+import { IconCalendarEventFilled } from "@tabler/icons-react";
 
 interface DateMenuProps<T extends FieldValues> {
   name: Path<T>;
@@ -24,7 +25,9 @@ export function DateMenu<T extends FieldValues>({
           onChange={(val) => field.onChange(val)}
           placeholder="Pick date"
           valueFormat="DD MMM YYYY"
+          minDate={new Date()}
           clearable
+          rightSection={<IconCalendarEventFilled size={14} />}
           styles={{ label: { marginBottom: 5, fontSize: 16 } }}
         />
       )}
