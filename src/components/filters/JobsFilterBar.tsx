@@ -111,7 +111,7 @@ export default function JobsFilterBar() {
               setLocation(v);
               setQuery({ ...query, location: v || undefined });
             }}
-            rightSection={<IconChevronDown size={16} />}
+            // rightSection={<IconChevronDown size={16} />}
             variant="unstyled"
             styles={{ input: { fontSize: rem(16) } }}
           />
