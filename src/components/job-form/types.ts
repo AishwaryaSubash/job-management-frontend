@@ -7,8 +7,8 @@ export interface JobFormValues {
   companyName: string;
   location: string;
   jobType: string | null; 
-  salaryMin: string;
-  salaryMax: string;
+  salaryMin: number;
+  salaryMax: number;
   applicationDeadline: Date | null;
   description: string;
 }
