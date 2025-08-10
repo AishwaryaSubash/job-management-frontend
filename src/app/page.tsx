@@ -22,7 +22,7 @@ export default async function Home({
   if (sp?.salaryMin) params.set("salaryMin", sp.salaryMin);
   if (sp?.salaryMax) params.set("salaryMax", sp.salaryMax);
 
-  const url = `${process.env.BACKEND_URL}/jobs${
+  const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/jobs${
     params.toString() ? `?${params.toString()}` : ""
   }`;
   const res = await fetch(url, { cache: "no-store" });

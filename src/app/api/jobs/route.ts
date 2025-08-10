@@ -16,7 +16,7 @@ export async function GET(req: Request) {
       if (v) params.set(k, v);
     });
     const upstream = await fetch(
-      `${process.env.BACKEND_URL}/jobs${params.toString() ? `?${params.toString()}` : ""
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/jobs${params.toString() ? `?${params.toString()}` : ""
       }`,
       {
         cache: "no-store",
@@ -46,7 +46,7 @@ export async function POST(req: Request) {
       responsibilities: "responsibilities",
     };
 
-    const upstream = await fetch(`${process.env.BACKEND_URL}/jobs`, {
+    const upstream = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/jobs`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
