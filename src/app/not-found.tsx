@@ -1,6 +1,7 @@
 import { Button, Container, Group, Text, Title } from "@mantine/core";
 
-export function ErrorPage() {
+
+export default function NotFound() {
   return (
     <Container className="py-20">
       <div className="text-center font-medium text-[38px] leading-none mb-12 text-gray-300 sm:text-[32px]">

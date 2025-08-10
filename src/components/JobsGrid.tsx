@@ -1,12 +1,17 @@
 "use client";
-import { SimpleGrid } from "@mantine/core";
+import { SimpleGrid, Text, Center } from "@mantine/core";
 import { JobCard } from "@/components/JobCard";
 import { JobInterface } from "@/lib/types";
-import { ErrorPage } from "@/app/ErrorPage";
 
 export default function JobsGrid({ jobs }: { jobs: JobInterface[] }) {
   if (!jobs || jobs.length === 0) {
-    return <ErrorPage />;
+    return (
+      <Center py="xl">
+        <Text size="lg" c="dimmed">
+          No jobs found. Try adjusting your filters.
+        </Text>
+      </Center>
+    );
   }
 
   return (
