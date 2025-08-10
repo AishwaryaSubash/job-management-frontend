@@ -1,9 +1,10 @@
 import { Button, Container, Group, Text, Title } from "@mantine/core";
-
+import { useRouter } from "next/navigation";
 
 export default function NotFound() {
+  const router = useRouter();
   return (
-    <Container className="py-20">
+    <Container className="flex flex-col items-center justify-center py-20">
       <div className="text-center font-medium text-[38px] leading-none mb-12 text-gray-300 sm:text-[32px]">
         404
       </div>
@@ -26,7 +27,7 @@ export default function NotFound() {
       </Text>
 
       <Group justify="center">
-        <Button variant="subtle" size="md">
+        <Button variant="subtle" size="md" onClick={() => router.push("/")}>
           Take me back to home page
         </Button>
       </Group>
