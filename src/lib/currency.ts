@@ -11,8 +11,3 @@ export function formatIndianNumberDigits(digits: string): string {
   const restWithComma = rest.replace(/\B(?=(\d{2})+(?!\d))/g, ",");
   return `${restWithComma},${last3}`;
 }
-
-export function formatINR(digits: string): string {
-  const formatted = formatIndianNumberDigits(digits);
-  return formatted;
-}
