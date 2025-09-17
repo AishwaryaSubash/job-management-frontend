@@ -31,16 +31,10 @@ export default function JobsList({
   }, [sp]);
 
   useEffect(() => {
-    if (initialQSRef.current === null) {
-      initialQSRef.current = queryString;
-    }
-  }, [queryString]);
-
-  useEffect(() => {
     if (initialQSRef.current === queryString) return;
     const controller = new AbortController();
     setLoading(true);
-    
+
     const url = `/api/jobs${queryString ? `?${queryString}` : ""}`;
     fetch(url, { cache: "no-store", signal: controller.signal })
       .then((r) => r.json())
